@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/jwtrealization
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: root
+
+  liquibase:
+    change-log: classpath:liquibase/db.changelog-master.xml
+    url: jdbc:postgresql://localhost:5432/jwtrealization
+    user: postgres
+    password: root
+

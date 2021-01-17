@@ -1,0 +1,53 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 236094227767-mvch5idld8fr30cu06h8pd98ktlbigvc.apps.googleusercontent.com
+            client-secret: 5MlhyVhY6Pu9dv_UkgxEUZS9
+            client-name: Google
+            provider: google
+            scope: openid,email,profile
+            redirect-uri: "{baseUrl}/oauth2/callback/{registrationId}"  # "{baseUrl}/oauth2/callback/{registrationId}"
+            client-authentication-method: basic
+            authorization-grant-type: authorization_code
+
+          facebook:
+            clientId: 121189305185277
+            clientSecret: 42ffe5aa7379e8326387e0fe16f34132
+            redirectUri: "{baseUrl}/oauth2/callback/{registrationId}" # Note that facebook now mandates the use of https redirect URIs, so make sure your app supports https in production
+            scope:
+              - email
+              - public_profile
+
+          github:
+            clientId: d3e47fc2ddd966fa4352
+            clientSecret: 3bc0f6b8332f93076354c2a5bada2f5a05aea60d
+            redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
+            scope:
+              - user:email
+              - read:user
+
+        provider:
+          google-provider:
+            authorization-uri: https://accounts.google.com/o/oauth2/v2/auth
+            token-uri: https://www.googleapis.com/oauth2/v4/token
+            user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
+            user-info-authentication-method: form
+            jwk-set-uri: http://my-auth-server/token_keys
+            user-name-attribute: name
+          custom-google:
+            issuer-uri: https://accounts.google.com
+
+          facebook:
+            authorizationUri: https://www.facebook.com/v3.0/dialog/oauth
+            tokenUri: https://graph.facebook.com/v3.0/oauth/access_token
+            userInfoUri: https://graph.facebook.com/v3.0/me?fields=id,first_name,middle_name,last_name,name,email,verified,is_verified,picture.width(250).height(250)
+
+
+
+      resourceserver:
+        jwt:
+          jwk-set-uri: https://localhost:8080/oauth2/default/v1/keys
+#         issuer-uri: https://dev-123456.oktapreview.com/oauth2/default/

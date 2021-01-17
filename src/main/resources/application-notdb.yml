@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: jdbc:mysql://192.168.1.101:3306/jwtrealization?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: user
+    password: 2006@Nastya
+    continueOnError: true
+    initialize: false
+    initialSize: 0
+    timeBetweenEvictionRunsMillis: 5000
+    minEvictableIdleTimeMillis: 5000
+    minIdle: 0
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      naming_strategy: org.hibernate.cfg.DefaultNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+        hbm2ddl:
+          auto: none
+        temp:
+          use_jdbc_metadata_defaults: false
